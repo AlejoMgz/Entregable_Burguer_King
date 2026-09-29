@@ -1,0 +1,499 @@
+:root {
+    --bk-rojo: #D62300;
+    --bk-rojo-oscuro: #A81B00;
+    --bk-naranja: #FF8732;
+    --bk-marron: #502314;
+    --bk-crema: #F5EBDC;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bk-crema);
+    color: var(--bk-marron);
+}
+
+h1,
+h2,
+h3,
+h4,
+.titulo-bk {
+    font-family: 'Lilita One', cursive;
+    letter-spacing: .5px;
+}
+
+/* Navbar y footer */
+.navbar-bk {
+    background: var(--bk-marron);
+    border-bottom: 4px solid var(--bk-naranja);
+}
+
+.navbar-bk .nav-link {
+    color: #fff;
+    font-weight: 500;
+}
+
+.navbar-bk .nav-link:hover,
+.navbar-bk .nav-link.active {
+    color: var(--bk-naranja);
+}
+
+.navbar-bk .navbar-brand {
+    font-family: 'Lilita One', cursive;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.navbar-bk .navbar-brand img {
+    height: 42px;
+    margin-right: 8px;
+}
+
+footer.footer-bk {
+    background: var(--bk-marron);
+    color: #fff;
+    border-top: 4px solid var(--bk-rojo);
+}
+
+footer.footer-bk a {
+    color: var(--bk-naranja);
+    text-decoration: none;
+}
+
+/* Botones */
+.btn-bk {
+    background: var(--bk-rojo);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: .5rem 1.5rem;
+    font-weight: 600;
+}
+
+.btn-bk:hover {
+    background: var(--bk-rojo-oscuro);
+    color: #fff;
+}
+
+.btn-bk-naranja {
+    background: var(--bk-naranja);
+    color: var(--bk-marron);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.btn-bk-naranja:hover {
+    background: #e9721a;
+    color: var(--bk-marron);
+}
+
+/* Hero / carrusel */
+.hero-slide {
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(80, 35, 20, .45);
+}
+
+.hero-fallback {
+    background: linear-gradient(135deg, var(--bk-rojo), var(--bk-naranja));
+}
+
+.carousel-caption {
+    z-index: 2;
+    bottom: 30%;
+}
+
+.carousel-caption h2 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+}
+
+/* Tarjetas */
+.tarjeta-bk {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(80, 35, 20, .15);
+    transition: transform .2s;
+    height: 100%;
+}
+
+.tarjeta-bk:hover {
+    transform: translateY(-6px);
+}
+
+.tarjeta-bk img {
+    height: 210px;
+    object-fit: cover;
+}
+
+.precio {
+    color: var(--bk-rojo);
+    font-family: 'Lilita One', cursive;
+    font-size: 1.4rem;
+}
+
+.seccion-titulo {
+    color: var(--bk-rojo);
+    text-align: center;
+    margin: 2.5rem 0 1.5rem;
+}
+
+.seccion-titulo::after {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 5px;
+    background: var(--bk-naranja);
+    margin: 8px auto 0;
+    border-radius: 5px;
+}
+
+.pill-cat {
+    border: 2px solid var(--bk-rojo);
+    color: var(--bk-rojo);
+    border-radius: 50px;
+    padding: .3rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.pill-cat.activa,
+.pill-cat:hover {
+    background: var(--bk-rojo);
+    color: #fff;
+}
+
+.caja-form {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 4px 14px rgba(80, 35, 20, .15);
+    border-top: 6px solid var(--bk-rojo);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--bk-naranja);
+    box-shadow: 0 0 0 .2rem rgba(255, 135, 50, .25);
+}
+
+.form-check-input:checked {
+    background-color: var(--bk-rojo);
+    border-color: var(--bk-rojo);
+}
+
+#btn-subir {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+    z-index: 99;
+    background: var(--bk-rojo);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+}
+
+/* Panel administrativo */
+.panel-lateral {
+    background: var(--bk-marron);
+    min-height: 100vh;
+}
+
+.panel-lateral a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: .7rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+
+.panel-lateral a:hover,
+.panel-lateral a.activo {
+    background: var(--bk-rojo);
+}
+
+.panel-lateral .marca {
+    font-family: 'Lilita One', cursive;
+    color: var(--bk-naranja);
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.tabla-bk thead {
+    background: var(--bk-rojo);
+    color: #fff;
+}
+
+.miniatura {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tarjeta-dash {
+    background: #fff;
+    border-radius: 16px;
+    border-left: 8px solid var(--bk-rojo);
+    box-shadow: 0 3px 10px rgba(80, 35, 20, .15);
+    padding: 1.2rem;
+    text-decoration: none;
+    color: var(--bk-marron);
+    display: block;
+}
+
+.tarjeta-dash:hover {
+    border-left-color: var(--bk-naranja);
+}
+
+.tarjeta-dash .num {
+    font-family: 'Lilita One', cursive;
+    font-size: 2.2rem;
+    color: var(--bk-rojo);
+}
+
+/* Alturas del espacio de imagen */
+.img-alta {
+    height: 210px;
+}
+
+.img-mini {
+    height: 42px;
+}
+
+/* Espacio de imágenes (tarjetas) */
+.img-espacio {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--bk-naranja), var(--bk-rojo));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-espacio .img-texto {
+    color: #fff;
+    font-family: 'Lilita One', cursive;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: .5rem;
+}
+
+.tarjeta-bk .img-espacio img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-slide {
+    background-color: var(--bk-rojo);
+}
+
+/* ===== Mis pedidos ===== */
+.pedido-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 18px rgba(80, 35, 20, .15);
+}
+
+.pedido-cabecera {
+    background: var(--bk-marron);
+    color: #fff;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--bk-naranja);
+}
+
+.pedido-numero {
+    font-family: 'Lilita One', cursive;
+    font-size: 1.5rem;
+    line-height: 1.1;
+}
+
+.pedido-fecha {
+    font-size: .8rem;
+    opacity: .85;
+}
+
+.estado-pill {
+    padding: .35rem .9rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: .8rem;
+    white-space: nowrap;
+}
+
+.estado-pendiente {
+    background: #FFC107;
+    color: var(--bk-marron);
+}
+
+.estado-preparacion {
+    background: var(--bk-naranja);
+    color: var(--bk-marron);
+}
+
+.estado-entregado {
+    background: #2E9E4F;
+    color: #fff;
+}
+
+.estado-cancelado {
+    background: var(--bk-rojo);
+    color: #fff;
+}
+
+.pedido-cuerpo {
+    padding: 1.25rem;
+    flex-grow: 1;
+}
+
+.tracker {
+    display: flex;
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.tracker::before {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 16%;
+    right: 16%;
+    height: 4px;
+    background: #e6d9c8;
+}
+
+.tracker .paso {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-size: .75rem;
+    color: #a08a78;
+}
+
+.tracker .punto {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e6d9c8;
+    color: #a08a78;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto .3rem;
+    font-size: 1rem;
+}
+
+.tracker .paso.activo {
+    color: var(--bk-marron);
+    font-weight: 600;
+}
+
+.tracker .paso.activo .punto {
+    background: var(--bk-rojo);
+    color: #fff;
+}
+
+.aviso-cancelado {
+    background: #fdecea;
+    color: var(--bk-rojo);
+    border-radius: 12px;
+    padding: .6rem 1rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.item-pedido {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .65rem 0;
+    border-bottom: 1px dashed #dccbb6;
+}
+
+.item-pedido:last-child {
+    border-bottom: none;
+}
+
+.miniatura-pedido {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.img-cuadro {
+    height: 64px;
+}
+
+.pedido-card .img-espacio img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-cant {
+    background: var(--bk-crema);
+    color: var(--bk-rojo);
+    font-family: 'Lilita One', cursive;
+    border-radius: 8px;
+    padding: .1rem .5rem;
+}
+
+.item-nombre {
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.item-precio {
+    font-size: .8rem;
+    color: #8a6f5e;
+}
+
+.item-subtotal {
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.pedido-pie {
+    background: var(--bk-crema);
+    border-top: 2px dashed #dccbb6;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pedido-total {
+    font-family: 'Lilita One', cursive;
+    font-size: 1.7rem;
+    color: var(--bk-rojo);
+}

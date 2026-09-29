@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block titulo %}Mis pedidos | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="seccion-titulo">Mis pedidos</h2>
+    {% if pedidos %}
+    <p class="text-center mb-4">
+        Tienes <strong>{{ pedidos|length }}</strong> pedido{{ pedidos|length|pluralize }}
+        registrado{{ pedidos|length|pluralize }}.
+    </p>
+    {% endif %}
+
+    <div class="row g-4">
+        {% for p in pedidos %}
+        <div class="col-lg-6">
+            <article class="pedido-card">
+
+                <div class="pedido-cabecera">
+                    <div>
+                        <div class="pedido-numero">Pedido #{{ p.pk }}</div>
+                        <div class="pedido-fecha"><i class="bi bi-calendar3"></i> {{ p.fecha|date:"d/m/Y - h:i A" }}
+                        </div>
+                    </div>
+                    <span class="estado-pill estado-{{ p.estado|lower }}">{{ p.get_estado_display }}</span>
+                </div>
+
+                <div class="pedido-cuerpo">
+
+                    {% if p.estado == 'CANCELADO' %}
+                    <div class="aviso-cancelado"><i class="bi bi-x-circle"></i> Este pedido fue cancelado</div>
+                    {% else %}
+                    <div class="tracker">
+                        <div class="paso activo">
+                            <div class="punto"><i class="bi bi-receipt"></i></div>Recibido
+                        </div>
+                        <div
+                            class="paso {% if p.estado == 'PREPARACION' or p.estado == 'ENTREGADO' %}activo{% endif %}">
+                            <div class="punto"><i class="bi bi-fire"></i></div>En preparación
+                        </div>
+                        <div class="paso {% if p.estado == 'ENTREGADO' %}activo{% endif %}">
+                            <div class="punto"><i class="bi bi-bag-check"></i></div>Entregado
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% for d in p.detalles.all %}
+                    <div class="item-pedido">
+                        <div class="miniatura-pedido">
+                            {% comment %}IMAGEN DEL PRODUCTO DEL PEDIDO: media/productos/{% endcomment %}
+                            {% include 'includes/imagen.html' with obj=d.producto clase='img-cuadro' texto='' %}
+                        </div>
+                        <div>
+                            <div class="item-nombre">
+                                <span class="item-cant">{{ d.cantidad }}x</span>
+                                <span>{{ d.producto.nombre }}</span>
+                            </div>
+                            <div class="item-precio">${{ d.precio_unitario|floatformat:"0g" }} c/u</div>
+                        </div>
+                        <div class="item-subtotal">${{ d.subtotal|floatformat:"0g" }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="pedido-pie">
+                    <span>Total ({{ p.detalles.all|length }} producto{{ p.detalles.all|length|pluralize }})</span>
+                    <span class="pedido-total">${{ p.total|floatformat:"0g" }}</span>
+                </div>
+
+            </article>
+        </div>
+        {% empty %}
+        <p class="text-center">Aún no has hecho pedidos. <a href="{% url 'productos' %}">Ver productos</a></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

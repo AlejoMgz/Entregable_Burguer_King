@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titulo %}Registro | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-7">
+            <div class="caja-form">
+                <h2 class="text-danger text-center">Crear cuenta de cliente</h2>
+                <form method="post" novalidate data-validar>{% csrf_token %}
+                    {% include 'includes/campos.html' %}
+                    <button class="btn btn-bk w-100">Registrarme</button>
+                </form>
+                <p class="text-center mt-3 mb-0">¿Ya tienes cuenta? <a href="{% url 'login' %}">Ingresar</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

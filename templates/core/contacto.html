@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block titulo %}Contáctenos | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="seccion-titulo">Contáctenos</h2>
+    <div class="row g-4">
+        <div class="col-md-7">
+            <div class="caja-form">
+                <form method="post" novalidate data-validar>{% csrf_token %}
+                    {% include 'includes/campos.html' %}
+                    <button class="btn btn-bk">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="caja-form">
+                <h4 class="text-danger">Información</h4>
+                <p><i class="bi bi-geo-alt text-danger"></i> Medellín, Antioquia</p>
+                <p><i class="bi bi-telephone text-danger"></i> (604) 438 0740</p>
+                <p><i class="bi bi-envelope text-danger"></i> contacto@burgerking.com</p>
+                <p><i class="bi bi-clock text-danger"></i> Lunes a domingo, 10:00 a.m. a 10:00 p.m.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

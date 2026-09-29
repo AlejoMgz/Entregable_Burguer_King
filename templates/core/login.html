@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo %}Ingresar | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-5">
+            <div class="caja-form">
+                <h2 class="text-danger text-center">Ingresar</h2>
+                <form method="post" novalidate data-validar>{% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% include 'includes/campos.html' %}
+                    <button class="btn btn-bk w-100">Entrar</button>
+                </form>
+                <p class="text-center mt-3 mb-0">¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

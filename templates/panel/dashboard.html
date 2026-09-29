@@ -1,0 +1,16 @@
+{% extends 'panel/base.html' %}
+{% block contenido %}
+<h2 class="text-danger">Panel administrativo</h2>
+<p>Bienvenido, {{ user.username }}. Selecciona un módulo para gestionar.</p>
+<div class="row g-3">
+    {% for t in tarjetas %}
+    <div class="col-md-4 col-lg-3">
+        <a class="tarjeta-dash" href="{% url 'panel_lista' t.slug %}">
+            <i class="bi {{ t.icono }} fs-3"></i>
+            <div class="num">{{ t.total }}</div>
+            <div>{{ t.titulo }}</div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'panel/base.html' %}
+{% block contenido %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="text-danger">{{ cfg.titulo }}</h2>
+    <a href="{% url 'panel_crear' modulo %}" class="btn btn-bk"><i class="bi bi-plus-lg"></i> Nuevo</a>
+</div>
+<div class="table-responsive bg-white rounded-3 shadow-sm">
+    <table class="table table-hover align-middle mb-0 tabla-bk">
+        <thead>
+            <tr>
+                {% for attr, etiqueta in cfg.columnas %}<th>{{ etiqueta }}</th>{% endfor %}
+                <th class="text-end">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in filas %}
+            <tr>
+                {% for c in f.celdas %}
+                <td>
+                    {% if c.tipo == 'img' %}
+                    {% if c.v %}<img src="{{ c.v }}" class="miniatura">{% endif %}
+                    {% elif c.tipo == 'bool' %}
+                    {% if c.v %}<span class="badge bg-success">Sí</span>{% else %}<span
+                        class="badge bg-secondary">No</span>{% endif %}
+                    {% else %}{{ c.v|truncatechars:60 }}{% endif %}
+                </td>
+                {% endfor %}
+                <td class="text-end">
+                    {% if modulo == 'pedidos' %}
+                    <a href="{% url 'panel_pedido_detalle' f.obj.pk %}" class="btn btn-sm btn-outline-secondary"
+                        title="Ver detalle"><i class="bi bi-eye"></i></a>
+                    {% endif %}
+                    <a href="{% url 'panel_editar' modulo f.obj.pk %}" class="btn btn-sm btn-bk-naranja"
+                        title="Editar"><i class="bi bi-pencil"></i></a>
+                    <a href="{% url 'panel_eliminar' modulo f.obj.pk %}" class="btn btn-sm btn-bk" title="Eliminar"><i
+                            class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="{{ cfg.columnas|length|add:1 }}" class="text-center py-4">No hay registros todavía.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

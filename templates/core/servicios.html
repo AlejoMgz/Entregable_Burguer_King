@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block titulo %}Servicios | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="seccion-titulo">Servicios</h2>
+    <div class="row g-4">
+        {% for s in servicios %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card tarjeta-bk">
+                {# IMAGEN DEL SERVICIO: media/servicios/<archivo> (o súbela desde el panel > Servicios) #}
+                    {% include 'includes/imagen.html' with obj=s alto='210px' texto=s.nombre %}
+                    <div class="card-body">
+                        <h4 class="text-danger">{{ s.nombre }}</h4>
+                        <p>{{ s.descripcion }}</p>
+                    </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No hay servicios disponibles por ahora.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

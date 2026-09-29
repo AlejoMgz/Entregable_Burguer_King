@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block titulo %}Productos | Burger King{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h2 class="seccion-titulo">Nuestros productos</h2>
+
+    <div class="d-flex flex-wrap gap-2 justify-content-center mb-3">
+        <a href="{% url 'productos' %}" class="pill-cat {% if not cat_activa %}activa{% endif %}">Todos</a>
+        {% for c in categorias %}
+        <a href="?categoria={{ c.pk }}"
+            class="pill-cat {% if cat_activa == c.pk|stringformat:'s' %}activa{% endif %}">{{ c.nombre }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <input type="text" id="buscador" class="form-control rounded-pill" placeholder="Buscar producto...">
+        </div>
+    </div>
+
+    <div class="row g-4">
+        {% for p in productos %}
+        <div class="col-lg-4 col-md-6 item-producto" data-nombre="{{ p.nombre|lower }}">
+            <div class="card tarjeta-bk">
+                {# IMAGEN DEL PRODUCTO: media/productos/<archivo> (o súbela desde el panel > Productos) #}
+                    {% include 'includes/imagen.html' with obj=p alto='210px' texto=p.nombre %}
+                    <div class="card-body d-flex flex-column">
+                        <small class="text-muted">{{ p.categoria.nombre }}</small>
+                        <h5>{{ p.nombre }}</h5>
+                        <p class="small">{{ p.descripcion }}</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="precio">${{ p.precio|floatformat:"0g" }}</span>
+                            <form method="post" action="{% url 'carrito_agregar' p.pk %}">{% csrf_token %}
+                                <button class="btn btn-bk btn-sm"><i class="bi bi-cart-plus"></i> Agregar</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No hay productos disponibles.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

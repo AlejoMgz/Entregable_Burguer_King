@@ -1,0 +1,11 @@
+{% extends 'panel/base.html' %}
+{% block contenido %}
+<div class="caja-form col-lg-6">
+    <h3 class="text-danger">Eliminar {{ cfg.singular|lower }}</h3>
+    <p>¿Seguro que deseas eliminar <strong>{{ obj }}</strong>? Esta acción no se puede deshacer.</p>
+    <form method="post">{% csrf_token %}
+        <button class="btn btn-bk">Sí, eliminar</button>
+        <a href="{% url 'panel_lista' modulo %}" class="btn btn-outline-secondary rounded-pill">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

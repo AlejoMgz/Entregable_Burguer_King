@@ -1,0 +1,8 @@
+{# ESPACIO DE IMAGEN: si el archivo aún no existe, se ve el recuadro de color con el texto. #}
+{# Cuando pongas la foto en media/ (o la subas desde el panel), aparece sola. #}
+<div class="img-espacio {{ clase|default:'img-alta' }}">
+    <span class="img-texto">{{ texto }}</span>
+    {% if obj.imagen %}
+    <img src="{{ obj.imagen.url }}" alt="{{ obj.nombre }}" onerror="this.style.display='none'">
+    {% endif %}
+</div>

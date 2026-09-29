@@ -1,0 +1,11 @@
+{% extends 'panel/base.html' %}
+{% block contenido %}
+<h2 class="text-danger">{{ titulo }}</h2>
+<div class="caja-form col-lg-8">
+    <form method="post" enctype="multipart/form-data" novalidate data-validar>{% csrf_token %}
+        {% include 'includes/campos.html' %}
+        <button class="btn btn-bk">Guardar</button>
+        <a href="{% url 'panel_lista' modulo %}" class="btn btn-outline-secondary rounded-pill">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

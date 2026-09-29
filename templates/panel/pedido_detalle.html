@@ -1,0 +1,38 @@
+{% extends 'panel/base.html' %}
+{% block contenido %}
+<h2 class="text-danger">Pedido #{{ pedido.pk }}</h2>
+<p><strong>Cliente:</strong> {{ pedido.cliente }} | <strong>Teléfono:</strong> {{ pedido.cliente.telefono }}
+    | <strong>Dirección:</strong> {{ pedido.cliente.direccion }}<br>
+    <strong>Fecha:</strong> {{ pedido.fecha }} | <strong>Estado:</strong> {{ pedido.get_estado_display }}
+</p>
+<div class="table-responsive bg-white rounded-3 shadow-sm">
+    <table class="table mb-0 tabla-bk">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in detalles %}
+            <tr>
+                <td>{{ d.producto.nombre }}</td>
+                <td>{{ d.cantidad }}</td>
+                <td>${{ d.precio_unitario }}</td>
+                <td>${{ d.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3" class="text-end">Total</th>
+                <th>${{ pedido.total }}</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<a href="{% url 'panel_lista' 'pedidos' %}" class="btn btn-outline-secondary rounded-pill mt-3">Volver</a>
+<a href="{% url 'panel_editar' 'pedidos' pedido.pk %}" class="btn btn-bk-naranja mt-3">Cambiar estado</a>
+{% endblock %}
